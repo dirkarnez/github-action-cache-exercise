@@ -7,14 +7,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Do cache
       id: my-cache
       uses: actions/cache@v3
       with:
         path: dir-i-need-to-cache
-        key: my-cache-key
+        key: ${{ runner.os }}-my-cache-key
 
     - name: This step is cached
       if: steps.my-cache.outputs.cache-hit != 'true'
